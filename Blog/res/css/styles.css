@@ -1,0 +1,232 @@
+@font-face {
+font-family: 'TStar';
+src: url('../fonts/TSTARPRO-Regular.eot'), url('../fonts/TSTARPRO-Regular.woff') format('woff'), url('../fonts/TSTARPRO-Regular.ttf') format('truetype'), url('../fonts/TSTARPRO-Regular.svg#TSTARPRO-Regular') format('svg');
+}
+
+* {
+margin: 0;
+padding: 0;
+}
+
+body {
+background-color: #232323;
+font-family: Arial, sans-serif;
+line-height: 150%;
+font-size: 16px;
+color: #CCCCCC;
+}
+
+section.main {
+margin: 50px 50px 25px 50px;
+}
+
+footer {
+margin: 0 50px 50px 50px;
+}
+
+p {
+margin: 0 0 10px 0;
+padding: 0;
+}
+
+ul {
+list-style-type: square;
+margin: 0 0 25px 25px;
+}
+
+h1 {
+font-family: TStar, 'Segoe UI Light', Arial, sans-serif;
+font-weight: normal;
+font-size: 45px;
+line-height: 110%;
+letter-spacing: -1px;
+margin: 0 0 20px -2px;
+}
+
+h2 {
+font-family: TStar, 'Segoe UI Light', Arial, sans-serif;
+font-weight: normal;
+font-size: 35px;
+line-height: 110%;
+letter-spacing: -1px;
+margin: 0 0 15px -1px;
+color: rgb(162, 193, 57);
+}
+
+h3 {
+font-family: TStar, 'Segoe UI Light', Arial, sans-serif;
+font-weight: normal;
+font-size: 20px;
+line-height: 110%;
+margin: 20px 0 10px -1px;
+}
+
+a {
+text-decoration: none;
+color: white;
+}
+
+span.next {
+float: right;
+display: block;
+background: url(../images/next.png) left center no-repeat;
+padding: 5px 0px 5px 45px;
+}
+
+a.back {
+display: block;
+background: url(../images/back.png) left center no-repeat;
+padding: 5px 25px 5px 45px;
+}
+
+input, textarea {
+background-color: #D0D0D0;
+border: 2px solid #D0D0D0;
+padding: 4px 6px;
+color: black;
+font-size: 16px;
+width: 50%;
+}
+
+textarea {
+height: 100px;
+font-family: Arial, sans-serif;
+}
+
+input:focus, textarea:focus {
+background-color: white;
+border-color: rgb(162, 193, 57);
+outline: none;
+}
+
+button {
+margin: 10px 0 0 0;
+border: 2px solid white;
+background-color: #232323;
+padding: 4px 30px;
+color: white;
+outline: none;
+}
+
+button:focus {
+background-color: rgb(162, 193, 57);
+}
+
+label {
+display: block;
+color: #666;
+padding: 10px 0 5px 0;
+}
+
+ul.errors {
+margin-bottom: 0;
+color: red;
+}
+
+.clear {
+clear: both;
+}
+
+.grayed {
+color: #666;
+}
+
+.article-listing {
+}
+
+.article-comments {
+}
+
+.article-comments form {
+margin: 50px 0 0 0;
+}
+
+.article-teaser {
+margin: 0 0 25px 0;
+padding: 20px 25px 20px 25px;
+overflow: hidden;
+}
+
+.article-teaser:last-child {
+margin-bottom: 0px;
+}
+
+.article-teaser .comment-count {
+display: block;
+float: right;
+background: url(../images/comment.png) -10px center no-repeat;
+padding: 2px 0 2px 30px;
+margin: 5px 0 0 20px;
+}
+
+.article-teaser h2 {
+color: white;
+}
+
+.article-detail {
+margin: 0 0 50px 0;
+}
+
+.article-detail h2 {
+color: white;
+font-size: 25px;
+margin: 15px 0 10px -1px;
+}
+
+.article-detail tt {
+font-family: 'Consolas', monospace;
+font-weight: normal;
+background-color: #202020;
+margin: 0 2px;
+padding: 0 5px;
+border: 1px solid #555555;
+border-radius: 3px;
+}
+
+.article-detail .summary {
+float: right;
+display: block;
+background: url(../images/user.png) left center no-repeat;
+padding: 0 0 0 20px;
+}
+
+.article-detail .introduction {
+clear: both;
+}
+
+.comment-listing {
+list-style-type: none;
+}
+
+.comment-listing li {
+background: url(../images/comment.png) -10px -7px no-repeat;
+padding: 5px 25px 5px 40px;
+}
+
+.comment-listing li cite {
+font-style: normal;
+display: block;
+margin: 0 0 10px 0;
+}
+
+.comment-listing li cite b {
+color: white;
+}
+
+.button-bar {
+padding: 10px 0 0 0;
+}
+
+/** Accent color settings for Color 'Lime' **/
+.accent-color {
+color: rgb(162, 193, 57);
+}
+
+.accent-bg {
+color: white;
+background-color: rgb(162, 193, 57);
+}
+
+.accent-bg a {
+color: white;
+}

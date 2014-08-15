@@ -1,0 +1,70 @@
+<h1><?php echo $this->article->getFieldValue('title') ?></h1>
+
+<div class="article-detail">
+	<p class="summary grayed">
+	<?php echo $this->article->getFieldValue('author') ?>, <?php echo date('d/m/Y H:i', strtotime($this->article->getFieldValue('created'))) ?>
+	</p>
+
+	<p class="introduction">
+	<b><?php echo nl2br($this->article->getFieldValue('shorttext')) ?></b>
+	</p>
+
+	<?php echo $this->article->getFieldValue('longtext') ?>
+
+	<div class="button-bar">
+		<a href="/articles" class="back">Go back</a>
+	</div>
+</div>
+
+<div class="article-comments">
+	<h2>Comments</h2>
+
+	<?php if ($this->comments): ?>
+		<ol class="comment-listing">
+		<?php foreach ($this->comments as $comment): ?>
+			<li>
+				<cite class="grayed">
+					<b><?php echo $comment->getFieldValue('name') ?></b>
+					on
+					<?php echo date('d/m/Y H:i', strtotime($comment->getFieldValue('created'))) ?>
+				</cite>
+
+				<blockquote>
+					<p>
+					<?php echo $comment->getFieldValue('comment') ?>
+					</p>
+				</blockquote>
+			</li>
+		<?php endforeach; ?>
+		</ol>
+	<?php else: ?>
+		<p>
+		There are no comments for this article. Be the first to write one!
+		</p>
+	<?php endif; ?>
+
+	<form action="<?php echo $this->commentform->getAttribute('action') ?>" method="post">
+		<?php if ($this->errors): ?>
+			<ul class="errors">
+			<?php foreach ($this->errors as $error): ?>
+				<li><?php echo $error ?></li>
+			<?php endforeach; ?>
+			</ul>
+		<?php endif; ?>
+
+		<label for="name">Your name</label>
+		<?php echo $this->commentform->getElement('name')->render() ?>
+
+		<label for="email">Your email address (will not be published)</label>
+		<?php echo $this->commentform->getElement('email')->render() ?>
+
+		<label for="comment">Your comment</label>
+		<?php echo $this->commentform->getElement('comment')->render() ?>
+
+		<br class="clear" />
+
+		<button type="submit">
+			Send
+		</button>
+	</form>
+</div>

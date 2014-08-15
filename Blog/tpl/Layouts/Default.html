@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<?php if ($this->hasViewData('article')): ?>
+			<title><?php echo $this->article->getFieldValue('title') ?> | Signature Example: Blog</title>
+		<?php else: ?>
+			<title>Signature Example: Blog</title>
+		<?php endif; ?>
+
+		<meta charset="utf-8">
+		<meta name="generator" content="Signature Framework">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+
+		<link rel="stylesheet" href="/<?php echo $this->resourceDir ?>css/styles.css">
+	</head>
+
+	<body>
+		<section class="main">
+			<?php echo $this->content ?>
+		</section>
+
+		<footer class="grayed">
+			Powered by <a href="http://www.signature-framework.com/" class="accent-color">Signature Framework</a>.
+		</footer>
+	</body>
+</html>

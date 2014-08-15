@@ -1,0 +1,27 @@
+	<h1>Articles</h1>
+
+	<?php if ($this->articles): ?>
+		<div class="article-listing">
+			<?php foreach ($this->articles as $article): ?>
+				<div class="article-teaser accent-bg">
+					<a href="/articles/<?php echo $article->getFieldValue('alias') ?>" class="next">
+						<span class="comment-count"><?php echo $article->getFieldValue('comment_count') ?></span>
+
+						<h2><?php echo $article->getFieldValue('title') ?></h2>
+
+						<p>
+						<?php echo $article->getFieldValue('shorttext') ?>
+						</p>
+
+						<div class="button-bar">
+							<span class="next">Read more...</span>
+						</div>
+					</a>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	<?php else: ?>
+		<p>
+		There are no articles.
+		</p>
+	<?php endif; ?>
