@@ -4,7 +4,7 @@
         <div class="article-listing">
             <?php foreach ($this->articles as $article): ?>
                 <div class="article-teaser accent-bg">
-                    <a href="/articles/<?php echo $article->getFieldValue('alias') ?>" class="next">
+                    <a href="<?php echo $this->linkBuilder->build('article', ['$alias' => $article->getFieldValue('alias')]) ?>" class="next">
                         <span class="comment-count"><?php echo $article->getFieldValue('comment_count') ?></span>
 
                         <h2><?php echo $article->getFieldValue('title') ?></h2>

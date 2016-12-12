@@ -12,7 +12,7 @@
     <?php echo $this->article->getFieldValue('longtext') ?>
 
     <div class="button-bar">
-        <a href="/articles" class="back">Go back</a>
+        <a href="<?php echo $this->linkBuilder->build('allarticles') ?>" class="back">Go back</a>
     </div>
 </div>
 

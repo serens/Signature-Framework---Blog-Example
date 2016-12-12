@@ -11,6 +11,7 @@ use Blog\Model\Comment;
 use Signature\Html\Form\Element\Input;
 use Signature\Html\Form\Element\Textarea;
 use Signature\Html\Form\Form;
+use Signature\Mvc\Routing\LinkBuilder;
 
 /**
  * Class ArticleController. Renders the given blog article.
@@ -18,6 +19,11 @@ use Signature\Html\Form\Form;
  */
 class ArticleController extends \Signature\Mvc\Controller\ActionController
 {
+    /**
+     * @var LinkBuilder
+     */
+    protected $linkBuilder = null;
+
     /**
      * Index-Action. Will list up all articles.
      * @return void
@@ -101,7 +107,7 @@ class ArticleController extends \Signature\Mvc\Controller\ActionController
                 ->setFieldValue('comment_count', (int) $article->getFieldValue('comment_count') + 1)
                 ->save();
 
-            $this->redirect('/articles/' . $article->getFieldValue('alias'));
+            $this->redirect($this->linkBuilder->build('article', ['$alias' => $article->getFieldValue('alias')]));
         } else {
             $this->handleArticleNotFoundError();
         }
@@ -125,12 +131,27 @@ class ArticleController extends \Signature\Mvc\Controller\ActionController
     }
 
     /**
+     * Creates the link builder.
+     * @return void
+     */
+    protected function initAction()
+    {
+        parent::initAction();
+
+        $this->linkBuilder = $this->objectProviderService->create(LinkBuilder::class);
+    }
+
+    /**
      * Assigns a layout to the view.
      * @return void
      */
     protected function initView()
     {
         parent::initView();
+
+        $this->view->setViewData([
+            'linkBuilder' => $this->linkBuilder,
+        ]);
 
         $this->view->setLayout($this->getTemplateDir() . '/Layouts/Default.phtml');
     }
