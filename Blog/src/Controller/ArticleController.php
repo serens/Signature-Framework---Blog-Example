@@ -48,7 +48,7 @@ class ArticleController extends \Signature\Mvc\Controller\ActionController
         if ($article = $this->getArticleByAlias($alias)) {
             $commentForm = new Form(
                 $this->request,
-                ['action' => '/articles/' . $article->getFieldValue('alias') . '/post']
+                ['action' => $this->linkBuilder->build('postcomment', ['$alias' => $article->getFieldValue('alias')])]
             );
 
             $commentForm->addElements([
