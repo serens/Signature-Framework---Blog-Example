@@ -126,7 +126,7 @@ class ArticleController extends \Signature\Mvc\Controller\ActionController
     {
         parent::initView();
 
-        $this->view->setLayout($this->getTemplateDir() . 'Layouts/Default.phtml');
+        $this->view->setLayout($this->getTemplateDir() . '/Layouts/Default.phtml');
     }
 
     /**
