@@ -30,7 +30,7 @@ class Module extends \Signature\Module\AbstractModule
     /**
      * @var string
      */
-    protected $description = 'Simple blog based on Signature Framework.';
+    protected $description = 'Simple blog based on Signature framework.';
 
     /**
      * @var string
