@@ -39,9 +39,9 @@ class Module extends \Signature\Module\AbstractModule
 
     /**
      * Adds routing information to the Signature Configuration.
-     * @return boolean
+     * @return bool
      */
-    public function init()
+    public function init(): bool
     {
         $this->configurationService->setConfigByPath(
             'Signature',
@@ -60,17 +60,17 @@ class Module extends \Signature\Module\AbstractModule
             [
                 'allarticles' => [
                     'Uris'                => ['/articles'],
-                    'ControllerClassname' => 'Blog\\Controller\\ArticleController',
+                    'ControllerClassname' => \Blog\Controller\ArticleController::class,
                     'ActionName'          => 'index',
                 ],
                 'article' => [
                     'Uris'                => ['/articles/$alias'],
-                    'ControllerClassname' => 'Blog\\Controller\\ArticleController',
+                    'ControllerClassname' => \Blog\Controller\ArticleController::class,
                     'ActionName'          => 'show',
                 ],
                 'postcomment' => [
                     'Uris'                => ['/articles/$alias/post', '/articles/$alias/post/'],
-                    'ControllerClassname' => 'Blog\\Controller\\ArticleController',
+                    'ControllerClassname' => \Blog\Controller\ArticleController::class,
                     'ActionName'          => 'post',
                 ],
             ]

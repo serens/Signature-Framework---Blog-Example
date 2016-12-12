@@ -6,6 +6,8 @@
 
 namespace Blog\Model;
 
+use Signature\Persistence\ResultCollectionInterface;
+
 /**
  * Class Article.
  * @package Blog\Model
@@ -20,19 +22,19 @@ class Article extends \Signature\Persistence\ActiveRecord\AbstractModel
     protected $primaryKeyName = 'id';
 
     /**
-     * @var \Signature\Persistence\ResultCollectionInterface
+     * @var ResultCollectionInterface
      */
     protected $comments = null;
 
     /**
      * Returns the comments of this article.
-     * @return \Signature\Persistence\ResultCollectionInterface
+     * @return ResultCollectionInterface
      */
-    public function getComments()
+    public function getComments(): ResultCollectionInterface
     {
         if (null === $this->comments) {
             /** @var \Blog\Model\Comment $comment */
-            $comment  = $this->objectProviderService->create('Blog\Model\Comment');
+            $comment  = $this->objectProviderService->create(\Blog\Model\Comment::class);
             $comments = $comment->findByField('article_id', $this->getID());
 
             if ($comments && $comments->count()) {

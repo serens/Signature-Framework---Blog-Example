@@ -6,6 +6,12 @@
 
 namespace Blog\Controller;
 
+use Blog\Model\Article;
+use Blog\Model\Comment;
+use Signature\Html\Form\Element\Input;
+use Signature\Html\Form\Element\Textarea;
+use Signature\Html\Form\Form;
+
 /**
  * Class ArticleController. Renders the given blog article.
  * @package Blog\Controller
@@ -18,8 +24,8 @@ class ArticleController extends \Signature\Mvc\Controller\ActionController
      */
     public function indexAction()
     {
-        /** @var \Blog\Model\Article $article */
-        $article = $this->objectProviderService->create('Blog\Model\Article');
+        /** @var Article $article */
+        $article = $this->objectProviderService->create(Article::class);
 
         $this->view->setViewData([
             'articles' => $article->findAll(),
@@ -31,18 +37,18 @@ class ArticleController extends \Signature\Mvc\Controller\ActionController
      * @param string $alias
      * @return void
      */
-    public function showAction($alias)
+    public function showAction(string $alias)
     {
         if ($article = $this->getArticleByAlias($alias)) {
-            $commentForm = new \Signature\Html\Form\Form(
+            $commentForm = new Form(
                 $this->request,
                 ['action' => '/articles/' . $article->getFieldValue('alias') . '/post']
             );
 
             $commentForm->addElements([
-                new \Signature\Html\Form\Element\Input('name', '', ['id' => 'name']),
-                new \Signature\Html\Form\Element\Input('email', '', ['id' => 'email']),
-                new \Signature\Html\Form\Element\Textarea('comment', '', ['id' => 'comment']),
+                new Input('name', '', ['id' => 'name']),
+                new Input('email', '', ['id' => 'email']),
+                new Textarea('comment', '', ['id' => 'comment']),
             ]);
 
             $this->view->setViewData([
@@ -61,7 +67,7 @@ class ArticleController extends \Signature\Mvc\Controller\ActionController
      * @param string $alias
      * @return void
      */
-    public function postAction($alias)
+    public function postAction(string $alias)
     {
         if ($article = $this->getArticleByAlias($alias)) {
             $errors = [];
@@ -78,8 +84,8 @@ class ArticleController extends \Signature\Mvc\Controller\ActionController
                 $this->forward('show');
             }
 
-            /** @var \Blog\Model\Comment $comment */
-            $comment = $this->objectProviderService->create('Blog\Model\Comment');
+            /** @var Comment $comment */
+            $comment = $this->objectProviderService->create(Comment::class);
             $comment
                 ->setFieldValues([
                     'article_id' => $article->getID(),
@@ -104,12 +110,12 @@ class ArticleController extends \Signature\Mvc\Controller\ActionController
     /**
      * Returns an article model by a given article-alias.
      * @param string $alias
-     * @return \Blog\Model\Article
+     * @return Article|null
      */
-    protected function getArticleByAlias($alias)
+    protected function getArticleByAlias(string $alias)
     {
-        /** @var \Blog\Model\Article $article */
-        $article = $this->objectProviderService->create('Blog\Model\Article');
+        /** @var Article $article */
+        $article = $this->objectProviderService->create(Article::class);
 
         if (($articles = $article->findByField('alias', $alias)) && $articles->count()) {
             return $articles->getFirst();
