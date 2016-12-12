@@ -1,6 +1,29 @@
 @font-face {
-font-family: 'TStar';
-src: url('../fonts/TSTARPRO-Regular.eot'), url('../fonts/TSTARPRO-Regular.woff') format('woff'), url('../fonts/TSTARPRO-Regular.ttf') format('truetype'), url('../fonts/TSTARPRO-Regular.svg#TSTARPRO-Regular') format('svg');
+font-family: 'DIN Pro';
+font-style: normal;
+font-weight: normal;
+src: local('DIN Pro'), url('/modules/Signature/res/fonts/DINPro.woff') format('woff');
+}
+
+@font-face {
+font-family: 'DIN Pro Light';
+font-style: normal;
+font-weight: normal;
+src: local('DIN Pro Light'), url('/modules/Signature/res/fonts/DINPro-Light.woff') format('woff');
+}
+
+@font-face {
+font-family: 'DIN Pro Medium';
+font-style: normal;
+font-weight: normal;
+src: local('DIN Pro Medium'), url('/modules/Signature/res/fonts/DINPro-Medium.woff') format('woff');
+}
+
+@font-face {
+font-family: 'DIN Pro Bold';
+font-style: normal;
+font-weight: normal;
+src: local('DIN Pro Bold'), url('/modules/Signature/res/fonts/DINPro-Bold.woff') format('woff');
 }
 
 * {
@@ -10,10 +33,15 @@ padding: 0;
 
 body {
 background-color: #232323;
-font-family: Arial, sans-serif;
-line-height: 150%;
+line-height: 1.65;
+font-family: 'DIN Pro Light';
 font-size: 16px;
 color: #CCCCCC;
+}
+
+b {
+font-family: 'DIN Pro Medium';
+font-weight: normal;
 }
 
 section.main {
@@ -35,29 +63,21 @@ margin: 0 0 25px 25px;
 }
 
 h1 {
-font-family: TStar, 'Segoe UI Light', Arial, sans-serif;
 font-weight: normal;
-font-size: 45px;
-line-height: 110%;
-letter-spacing: -1px;
+font-size: 48px;
 margin: 0 0 20px -2px;
 }
 
 h2 {
-font-family: TStar, 'Segoe UI Light', Arial, sans-serif;
 font-weight: normal;
-font-size: 35px;
-line-height: 110%;
-letter-spacing: -1px;
+font-size: 25px;
 margin: 0 0 15px -1px;
 color: rgb(162, 193, 57);
 }
 
 h3 {
-font-family: TStar, 'Segoe UI Light', Arial, sans-serif;
 font-weight: normal;
 font-size: 20px;
-line-height: 110%;
 margin: 20px 0 10px -1px;
 }
 
@@ -71,13 +91,21 @@ float: right;
 display: block;
 background: url(../images/next.png) left center no-repeat;
 padding: 5px 0px 5px 45px;
+opacity: 0.55;
 }
+  a:hover span.next, a:focus span.next {
+    opacity: 1;
+  }
 
 a.back {
 display: block;
 background: url(../images/back.png) left center no-repeat;
 padding: 5px 25px 5px 45px;
+opacity: 0.35;
 }
+  a.back:hover, a.back:focus {
+    opacity: 1;
+  }
 
 input, textarea {
 background-color: #D0D0D0;
@@ -90,7 +118,7 @@ width: 50%;
 
 textarea {
 height: 100px;
-font-family: Arial, sans-serif;
+font-family: 'DIN Pro Light', sans-serif;
 }
 
 input:focus, textarea:focus {
