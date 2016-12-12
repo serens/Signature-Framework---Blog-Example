@@ -34,12 +34,9 @@ class Article extends \Signature\Persistence\ActiveRecord\AbstractModel
     {
         if (null === $this->comments) {
             /** @var \Blog\Model\Comment $comment */
-            $comment  = $this->objectProviderService->create(\Blog\Model\Comment::class);
-            $comments = $comment->findByField('article_id', $this->getID());
+            $comment = $this->objectProviderService->create(\Blog\Model\Comment::class);
 
-            if ($comments && $comments->count()) {
-                $this->comments = $comments;
-            }
+            $this->comments = $comment->findByField('article_id', $this->getID());
         }
 
         return $this->comments;
