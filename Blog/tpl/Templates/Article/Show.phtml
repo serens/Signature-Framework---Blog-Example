@@ -19,7 +19,7 @@
 <div class="article-comments">
     <h2>Comments</h2>
 
-    <?php if ($this->comments): ?>
+    <?php if ($this->comments && $this->comments->count()): ?>
         <ol class="comment-listing">
         <?php foreach ($this->comments as $comment): ?>
             <li>
