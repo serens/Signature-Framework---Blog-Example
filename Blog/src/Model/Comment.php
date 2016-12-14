@@ -10,7 +10,7 @@ namespace Blog\Model;
  * Class Comment.
  * @package Blog\Model
  */
-class Comment extends \Signature\Persistence\ActiveRecord\AbstractModel
+class Comment extends \Signature\Persistence\ActiveRecord\AbstractRecord
 {
     /**
      * @var string

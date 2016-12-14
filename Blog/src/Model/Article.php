@@ -12,7 +12,7 @@ use Signature\Persistence\ResultCollectionInterface;
  * Class Article.
  * @package Blog\Model
  */
-class Article extends \Signature\Persistence\ActiveRecord\AbstractModel
+class Article extends \Signature\Persistence\ActiveRecord\AbstractRecord
 {
     use \Signature\Object\ObjectProviderServiceTrait;
 
@@ -33,10 +33,7 @@ class Article extends \Signature\Persistence\ActiveRecord\AbstractModel
     public function getComments(): ResultCollectionInterface
     {
         if (null === $this->comments) {
-            /** @var \Blog\Model\Comment $comment */
-            $comment = $this->objectProviderService->create(\Blog\Model\Comment::class);
-
-            $this->comments = $comment->findByField('article_id', $this->getID());
+            $this->comments = \Blog\Model\Comment::findByField('article_id', $this->getID());
         }
 
         return $this->comments;
